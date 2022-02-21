@@ -1,0 +1,22 @@
+#component-terminal-loading-text {
+  .loading::after {
+    animation: ellipses 1.3s infinite;
+    content: "";
+  }
+
+  @keyframes ellipses {
+    0%,
+    100% {
+      content: "";
+    }
+    30% {
+      content: ".";
+    }
+    60% {
+      content: "..";
+    }
+    80% {
+      content: "...";
+    }
+  }
+}

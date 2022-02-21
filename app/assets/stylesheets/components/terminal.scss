@@ -1,0 +1,36 @@
+#component-terminal {
+  max-width: 875px;
+  width: 100%;
+  box-shadow: $color-dark-palette-5 0px 1px 3px -1px;
+  line-height: 1.2;
+
+  &.minimized {
+    #component-terminal-body {
+      display: none;
+    }
+  }
+
+  &.closed {
+    display: none;
+  }
+
+  &.maximized {
+    max-width: initial;
+    #component-terminal-body {
+      height: 80vh;
+
+      .terminal-background-gradient {
+        max-width: 1200px;
+        height: 80vh;
+        width: calc(100% - 20px);
+      }
+    }
+  }
+
+  &.maximized,
+  &.regular {
+    #component-terminal-body {
+      display: flex;
+    }
+  }
+}

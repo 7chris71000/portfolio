@@ -1,0 +1,49 @@
+#component-terminal-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: $color-dark-palette-6;
+  height: 40px;
+
+  .terminal-header-left {
+    display: flex;
+    align-items: center;
+
+    .header-link {
+      margin-left: 10px;
+      font-size: 20px;
+      text-decoration: none;
+      color: $color-dark-palette-3;
+
+      .github-icon {
+        &:hover {
+          color: $color-dark-palette-5;
+        }
+      }
+    }
+  }
+
+  .terminal-header-right {
+    display: flex;
+
+    .terminal-header-minimize,
+    .terminal-header-restore,
+    .terminal-header-maximize,
+    .terminal-header-close {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .terminal-header-minimize,
+    .terminal-header-restore,
+    .terminal-header-maximize {
+      &:hover {
+        background-color: $color-dark-palette-7;
+      }
+    }
+    .terminal-header-close {
+      &:hover {
+        background-color: $color-red-text;
+      }
+    }
+  }
+}
