@@ -5,7 +5,7 @@
   border-top: none;
   box-sizing: border-box;
 
-  height: 40vh;
+  height: 60vh;
 
   overflow-y: auto;
   display: flex;
@@ -26,7 +26,7 @@
 
   .terminal-background-gradient {
     position: absolute;
-    height: 40vh;
+    height: 60vh;
     max-width: 873px;
     width: 100%;
     z-index: 1000;
@@ -50,6 +50,7 @@
 
     .command-results {
       display: flex;
+      flex-wrap: wrap;
 
       .command-result {
         width: fit-content;
@@ -65,6 +66,14 @@
           }
         }
       }
+    }
+
+    .command-result-divider {
+      margin: 10px 0;
+    }
+
+    .command-result-text {
+      white-space: pre-wrap;
     }
   }
 

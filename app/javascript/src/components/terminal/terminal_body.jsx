@@ -8,7 +8,7 @@ import TerminalHelperText from "./terminal_helper_text";
 // command history is an array of objects: { inputString: "ls", results: [{string: 'about', resultOnClick: func}] }
 
 function TerminalBody({ commandHistory, onCommandSubmit }) {
-  const [inputString, setInputString] = useState("");
+  const [inputString, setInputString] = useState("help");
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
   const [terminalFocused, setTerminalFocused] = useState(true);
   const [signingIn, setSigningIn] = useState(true);
@@ -87,7 +87,7 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
           <TerminalHelperText />
           {commandHistory &&
             commandHistory.map((command, index) => {
-              const { inputString, results } = command;
+              const { inputString, results, text: resultText } = command;
               return (
                 <div key={`command-${index}`} className="command-container">
                   <div className="command-location-container">
@@ -98,6 +98,10 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
                     <span className="command-starter-carat">{">>>"}</span>{" "}
                     {inputString}
                   </div>
+                  <div className="command-result-text">{resultText}</div>
+                  {resultText && results && (
+                    <div className="command-result-divider"></div>
+                  )}
                   <div className="command-results">
                     {results &&
                       results.map((result, index) => {
