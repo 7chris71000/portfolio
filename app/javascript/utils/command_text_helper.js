@@ -27,4 +27,50 @@ const commandHelpText = {
     "Displays a list of technologies I can use at a professional level.",
 };
 
-export { helpText };
+const linkableCommands = {
+  projects: [
+    {
+      name: "RailsTemplate",
+      link: "https://github.com/7chris71000/Rails-Template",
+    },
+    {
+      name: "CardMatchingMobile",
+      link: "https://github.com/7chris71000/card-matching-react-native",
+    },
+    {
+      name: "DataProtectionWithRailsAPI",
+      link: "https://github.com/7chris71000/authentication-wo-devise-rails-api",
+    },
+    {
+      name: "xkcdCromeExtension",
+      link: "https://github.com/7chris71000/xkcd_extension",
+    },
+  ],
+
+  socials: [
+    {
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/in/christopher-francis-40227b127/",
+    },
+    {
+      name: "GitHub",
+      link: "https://github.com/7chris71000",
+    },
+  ],
+
+  "terminal-repository": [
+    {
+      name: "https://github.com/7chris71000/portfolio",
+      link: "https://github.com/7chris71000/portfolio",
+    },
+  ],
+
+  resume: [
+    {
+      name: "ChrisFrancisResume.pdf",
+      link: "#",
+    },
+  ],
+};
+
+export { helpText, commandHelpText, linkableCommands };

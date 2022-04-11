@@ -5,8 +5,13 @@ import TerminalHeader from "./terminal_header";
 import TerminalBody from "./terminal_body";
 
 // Utilities
-import { helpText } from "../../../utils/command_text_helper";
+import {
+  commandHelpText,
+  helpText,
+  linkableCommands,
+} from "../../../utils/command_text_helper";
 
+// TODO: allow all commands with results to be passed in as props. Change from imports
 function Terminal() {
   const [sizeStatus, setSizeStatus] = useState("regular");
   const [commandHistory, setCommandHistory] = useState([]);
@@ -16,7 +21,7 @@ function Terminal() {
     "help",
     "clear",
     "cd",
-    "cat",
+    "cat", // TODO: potentially take this out
     "mkdir",
     "pwd",
     "exit",
@@ -39,8 +44,8 @@ function Terminal() {
       ...commandHistory,
       {
         inputString,
-        results: commandResults(inputString),
         text: textResults(inputString),
+        results: commandResults(inputString),
       },
     ]);
   }
@@ -51,7 +56,24 @@ function Terminal() {
     // go through the validCommands array and see if the inputCommand matches any of the commands
     let result = [];
 
+    // return help text and skip actual use of command
+    if (inputCommandList.includes("-h")) {
+      result = [
+        {
+          string: inputCommandList[0],
+          resultOnClick: () => {
+            handleCommandSubmit(inputCommandList[0]);
+          },
+        },
+      ];
+      return result;
+    }
+
     switch (inputCommandList[0]) {
+      case "ls":
+        //TODO
+        break;
+
       case "help":
         result = validCommands.map((command) => ({
           string: command,
@@ -59,6 +81,51 @@ function Terminal() {
             handleCommandSubmit(`${command} -h`);
           },
         }));
+        break;
+
+      case "clear":
+        setCommandHistory([]);
+        break;
+
+      case "cd":
+        //TODO
+        break;
+      case "cat":
+        //TODO
+        break;
+      case "mkdir":
+        //TODO
+        break;
+      case "pwd":
+        //TODO
+        break;
+      case "exit":
+        setSizeStatus("closed");
+        break;
+
+      case "about-terminal":
+        //TODO
+        break;
+      case "about-me":
+        //TODO
+
+        // I am a software developer at BiteSite Inc. located in Ottawa Ontario, Canada. I'm currently coding in React and Ruby on Rails.
+        // My professional interests lie in web application development and software project management.
+        break;
+
+      case "projects":
+      case "socials":
+      case "terminal-repository":
+      case "resume":
+        // using fallthough for above commands
+        result = linkableCommands[inputCommandList[0]].map((project) => ({
+          string: project.name,
+          resultOnClick: () => {
+            window.open(project.link, "_blank").focus();
+          },
+        }));
+        break;
+
       default:
         "";
     }
@@ -69,7 +136,15 @@ function Terminal() {
   }
 
   function textResults(inputCommand) {
-    switch (inputCommand) {
+    const inputCommandList = inputCommand.split(" ");
+    // return help text and skip actual use of command
+    if (inputCommandList.includes("-h")) {
+      const helpString = `${commandHelpText[inputCommandList[0]]}`;
+
+      return helpString;
+    }
+
+    switch (inputCommandList[0]) {
       case "help":
         return helpText;
       default:

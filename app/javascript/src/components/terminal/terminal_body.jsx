@@ -67,9 +67,12 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
   const currentInputRef = useRef();
 
   useEffect(() => {
+    // setTimeout(() => {
+    //   setSigningIn(false);
+    // }, 2000);
     setTimeout(() => {
       setSigningIn(false);
-    }, 2000);
+    }, 0);
   }, []);
 
   useEffect(() => {
