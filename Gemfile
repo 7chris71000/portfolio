@@ -57,6 +57,8 @@ gem 'resque', require: 'resque/server'
 gem 'font-awesome-rails'
 gem 'aws-sdk-s3', '~> 1'
 gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
