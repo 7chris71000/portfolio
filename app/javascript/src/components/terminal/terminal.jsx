@@ -7,7 +7,6 @@ import TerminalBody from "./terminal_body";
 // Utilities
 import {
   commandHelpText,
-  helpText,
   linkableCommands,
 } from "../../../utils/command_text_helper";
 
@@ -48,7 +47,6 @@ function Terminal() {
   }
 
   function commandResults(inputCommand) {
-    // TODO: if the user can click on the result, then return a function, otherwise return null
     const inputCommandList = inputCommand.split(" ");
     // go through the validCommands array and see if the inputCommand matches any of the commands
     let result = [];
@@ -94,10 +92,17 @@ function Terminal() {
         break;
 
       case "about-terminal":
-        //TODO
+        result = [
+          {
+            string: "terminal-repository",
+            resultOnClick: () => {
+              handleCommandSubmit("terminal-repository");
+            },
+          },
+        ];
         break;
+
       case "about-me":
-        //TODO
         result = [
           {
             string: "Contact",
@@ -124,8 +129,6 @@ function Terminal() {
       default:
         "";
     }
-
-    // if it does, return the results array
 
     return result;
   }
@@ -168,7 +171,26 @@ function Terminal() {
         break;
 
       case "about-terminal":
-        //TODO
+        textResult = (
+          <div>
+            <p>
+              This is a personal project inspired by many other terminal based
+              portfolios.
+            </p>
+
+            <p>
+              This project was created from the ground up in React with custom
+              components, styling, and text. It is not a fully functional
+              terminal. Just a creative way to display my work and is hopefully
+              fun for the user to play with.
+            </p>
+
+            <p>
+              The styling is based off the theme I use in my terminal. Oh My Zsh
+              theme, "refined".
+            </p>
+          </div>
+        );
         break;
 
       case "about-me":
@@ -199,6 +221,10 @@ function Terminal() {
         break;
 
       case "terminal-repository":
+        textResult =
+          "Interested in how I did this? Here is the repository for my portfolio:";
+        break;
+
       case "resume":
         textResult = "Resume opened in new tab.";
         break;

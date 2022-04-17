@@ -1,11 +1,3 @@
-const helpText =
-  "This command is used to help the user learn about valid commands to use in CF Terminal.\n" +
-  "\n" +
-  "Usage: [command] -h\n" +
-  "\n" +
-  "Available Commands:\n" +
-  "\tNote: Click a command to view it's help text\n";
-
 const commandHelpText = {
   ls: "Displays all valid commands to use in CF Terminal.",
   help: "Displays all valid commands to use in CF Terminal.",
@@ -62,4 +54,4 @@ const linkableCommands = {
   ],
 };
 
-export { helpText, commandHelpText, linkableCommands };
+export { commandHelpText, linkableCommands };
