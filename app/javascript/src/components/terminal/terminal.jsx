@@ -20,10 +20,6 @@ function Terminal() {
     "ls",
     "help",
     "clear",
-    "cd",
-    "cat", // TODO: potentially take this out
-    "mkdir",
-    "pwd",
     "exit",
     "about-terminal",
     "about-me",
@@ -40,6 +36,7 @@ function Terminal() {
   }
 
   function handleCommandSubmit(inputString) {
+    executeCommand(inputString);
     setCommandHistory((commandHistory) => [
       ...commandHistory,
       {
@@ -71,7 +68,6 @@ function Terminal() {
 
     switch (inputCommandList[0]) {
       case "ls":
-        //TODO
         result = validCommands.map((command) => ({
           string: command,
           resultOnClick: () => {
@@ -93,18 +89,6 @@ function Terminal() {
         setCommandHistory([]);
         break;
 
-      case "cd":
-        //TODO
-        break;
-      case "cat":
-        //TODO
-        break;
-      case "mkdir":
-        //TODO
-        break;
-      case "pwd":
-        //TODO
-        break;
       case "exit":
         setSizeStatus("closed");
         break;
@@ -128,7 +112,6 @@ function Terminal() {
       case "projects":
       case "socials":
       case "terminal-repository":
-      case "resume":
         // using fallthough for above commands
         result = linkableCommands[inputCommandList[0]].map((project) => ({
           string: project.name,
@@ -147,6 +130,10 @@ function Terminal() {
     return result;
   }
 
+  /**
+   * @param {string} inputCommand - the command that the user entered
+   * @returns {string} - the text to be displayed in the terminal. Formatted as a string or html element
+   */
   function textResults(inputCommand) {
     let textResult = "";
 
@@ -160,31 +147,24 @@ function Terminal() {
 
     switch (inputCommandList[0]) {
       case "help":
-        textResult =
-          "This command is used to help the user learn about valid commands in CF Terminal.\n" +
-          "\n" +
-          "Usage: [command] -h\n" +
-          "\n" +
-          "Available Commands:\n" +
-          "\tNote: Click a command to view it's help text\n";
+        textResult = (
+          <div>
+            <p>
+              This command is used to help the user learn about valid commands
+              in CF Terminal.
+            </p>
+            <p>Usage: [command] -h</p>
+            <p>
+              Available Commands:
+              <br />
+              Note: Click a command to view it's help text
+            </p>
+          </div>
+        );
         break;
 
       case "ls":
         textResult = "";
-        break;
-
-      case "cd":
-        //TODO
-        break;
-      case "cat":
-        //TODO
-        break;
-      case "mkdir":
-        //TODO
-        break;
-
-      case "pwd":
-        //TODO
         break;
 
       case "about-terminal":
@@ -192,50 +172,71 @@ function Terminal() {
         break;
 
       case "about-me":
-        //TODO
-        textResult =
-          "\n" +
-          "Hi, I'm Chris Francis 👋." +
-          "\n" +
-          "\n" +
-          "I am a software developer located in Ottawa, Canada. I'm currently coding in React and Ruby on Rails. " +
-          "My professional interests lie in web application development and software project management. 💻" +
-          "\n" +
-          "\n" +
-          // "Outside of tech I love to lift, am an avid reader, and a huge Ravens fan. 🏋️📚🏈" +
-          // "\n" +
-          // "\n" +
-          "If you would like to hear more about me or you think I would be interested in a project of yours, let's setup a coffee chat! ☕";
+        textResult = (
+          <div>
+            <p>Hi, I'm Chris Francis 👋.</p>
+            <p>
+              I am a software developer located in Ottawa, Canada. I'm currently
+              coding in React and Ruby on Rails. My professional interests lie
+              in web application development and software project management. 💻
+            </p>
+
+            {/* Outside of tech I love to lift, am an avid reader, and a huge Ravens fan. 🏋️📚🏈 */}
+            <p>
+              If you would like to hear more about me or you think I would be
+              interested in a project of yours, let's setup a coffee chat! ☕
+            </p>
+          </div>
+        );
         break;
 
       case "projects":
+        textResult = "Here are more projects I have done:";
+        break;
+
       case "socials":
+        textResult = "Find me at:";
+        break;
+
       case "terminal-repository":
       case "resume":
-        //TODO
+        textResult = "Resume opened in new tab.";
         break;
 
       case "tech-stack":
-        textResult =
-          "\n" +
-          "Professional (Current): \n  " +
-          "Ruby on Rails \n  " +
-          "React \n  " +
-          "Ruby (Gem Development) \n  " +
-          "RSpec \n  " +
-          "React Native \n  " +
-          "SCSS \n  " +
-          "PostgreSQL \n  " +
-          "Python (Windows Services) \n  " +
-          "Heroku \n  " +
-          "Git \n  " +
-          "\n" +
-          "Professional (Past): \n  " +
-          "Grails \n  " +
-          "Struts 2 \n  " +
-          "\n" +
-          "Personal Projects: \n  " +
-          "Python (Raspberry Pi Robotics) \n  ";
+        textResult = (
+          <div>
+            <p>
+              Professional (Current)
+              <ul>
+                <li>Ruby on Rails</li>
+                <li>React</li>
+                <li>Ruby (Gem Development)</li>
+                <li>RSpec</li>
+                <li>React Native</li>
+                <li>SCSS</li>
+                <li>PostgreSQL</li>
+                <li>Python (Windows Services)</li>
+                <li>Heroku</li>
+                <li>Git</li>
+              </ul>
+            </p>
+            <p>
+              Professional (Past)
+              <ul>
+                <li>Grails</li>
+                <li>Struts 2</li>
+              </ul>
+            </p>
+            <p>
+              Personal Projects
+              <ul>
+                <li>Python (Raspberry Pi Robotics)</li>
+              </ul>
+            </p>
+          </div>
+        );
+
         break;
 
       default:
@@ -243,6 +244,16 @@ function Terminal() {
     }
 
     return textResult;
+  }
+
+  function executeCommand(inputString) {
+    switch (inputString) {
+      case "resume":
+        window.open(`/${inputString}`, "_blank").focus();
+        break;
+      default:
+        break;
+    }
   }
 
   return (

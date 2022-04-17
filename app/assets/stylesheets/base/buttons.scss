@@ -1,0 +1,22 @@
+.btn {
+  background-image: linear-gradient(
+    0deg,
+    $color-dark-palette-3 0%,
+    $color-dark-palette-4 50%,
+    $color-dark-palette-3 100%
+  );
+  border-radius: 5px;
+  color: $color-dark-palette-10;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all 0.5s;
+  box-shadow: $color-dark-palette-5 0px 1px 3px -1px;
+}
+
+.btn:hover {
+  box-shadow: $color-dark-palette-4 0 1px 10px;
+}

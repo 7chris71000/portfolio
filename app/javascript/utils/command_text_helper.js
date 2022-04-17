@@ -7,13 +7,9 @@ const helpText =
   "\tNote: Click a command to view it's help text\n";
 
 const commandHelpText = {
-  ls: "List all files and folders in the current directory",
+  ls: "Displays all valid commands to use in CF Terminal.",
   help: "Displays all valid commands to use in CF Terminal.",
   clear: "Clears the CF Terminal",
-  cd: "Change the current directory",
-  cat: "Displays the contents of a file",
-  mkdir: "Creates a new directory",
-  pwd: "Displays the current working directory",
   exit: "Exits the CF Terminal",
   "about-terminal": "Displays information about the CF Terminal application.",
   "about-me": "Displays information about myself.",
@@ -22,7 +18,7 @@ const commandHelpText = {
   socials: "Displays a list of social media links where to find me.",
   "terminal-repository":
     "Displays a link to the GitHub repository of the CF Terminal application.",
-  resume: "Displays a link to my resume.", //TODO: Resume on website page
+  resume: "Opens my resume in a new tab.",
   "tech-stack":
     "Displays a list of technologies I can use at a professional level.",
 };
@@ -62,13 +58,6 @@ const linkableCommands = {
     {
       name: "https://github.com/7chris71000/portfolio",
       link: "https://github.com/7chris71000/portfolio",
-    },
-  ],
-
-  resume: [
-    {
-      name: "ChrisFrancisResume.pdf",
-      link: "#",
     },
   ],
 };
