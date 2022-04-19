@@ -92,7 +92,7 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
                 <div key={`command-${index}`} className="command-container">
                   <div className="command-location-container">
                     <span className="command-location">~/dev/chrisfrancis</span>{" "}
-                    <span className="command-git">git/main*</span>
+                    <span className="command-git">git:main*</span>
                   </div>
                   <div className="command-input">
                     <span className="command-starter-carat">{">>>"}</span>{" "}
@@ -132,8 +132,8 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
             })}
           <div className="text-input-container">
             <div className="command-location-container">
-              <span className="command-location">~/dev/chrisfrancis</span>{" "}
-              <span className="command-git">git/main*</span>
+              <span className="command-location">portfolio</span>{" "}
+              <span className="command-git">git:main*</span>
             </div>
             <span className="command-starter-carat">{">>>"}</span> {inputString}
             <input

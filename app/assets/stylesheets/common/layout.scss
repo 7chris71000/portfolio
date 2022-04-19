@@ -7,6 +7,38 @@ body {
   margin: 0;
   padding: 0;
 
+  .header {
+    .left-container {
+      // hide left part of rhombus from skew
+      overflow: hidden;
+
+      .title-skew-container {
+        font-size: 30px;
+        background-color: $color-dark-palette-6;
+        width: fit-content;
+        margin: 0 0 0 -20px;
+        padding: 0 20px;
+
+        // skew everything by 20deg
+        -webkit-transform: skew(25deg);
+        -moz-transform: skew(25deg);
+        -o-transform: skew(25deg);
+
+        @media (max-width: 450px) {
+          font-size: 8vw;
+          width: 100%;
+        }
+
+        .title-text {
+          // skew text back to normal
+          -webkit-transform: skew(-25deg);
+          -moz-transform: skew(-25deg);
+          -o-transform: skew(-25deg);
+        }
+      }
+    }
+  }
+
   .container {
     max-width: 1200px;
     margin: 0 auto;
