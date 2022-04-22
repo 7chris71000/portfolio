@@ -91,7 +91,7 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
               return (
                 <div key={`command-${index}`} className="command-container">
                   <div className="command-location-container">
-                    <span className="command-location">~/dev/chrisfrancis</span>{" "}
+                    <span className="command-location">portfolio</span>{" "}
                     <span className="command-git">git:main*</span>
                   </div>
                   <div className="command-input">
