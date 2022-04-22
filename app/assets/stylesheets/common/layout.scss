@@ -12,6 +12,11 @@ body {
       // hide left part of rhombus from skew
       overflow: hidden;
 
+      a {
+        text-decoration: none;
+        color: $color-dark-palette-1;
+      }
+
       .title-skew-container {
         font-size: 30px;
         background-color: $color-dark-palette-6;
@@ -23,6 +28,10 @@ body {
         -webkit-transform: skew(25deg);
         -moz-transform: skew(25deg);
         -o-transform: skew(25deg);
+
+        &:hover {
+          background-color: $color-dark-palette-5;
+        }
 
         @media (max-width: 450px) {
           font-size: 8vw;
