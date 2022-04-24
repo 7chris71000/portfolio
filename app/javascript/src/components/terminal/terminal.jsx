@@ -236,9 +236,9 @@ function Terminal() {
               Professional (Current)
               <ul>
                 <li>Ruby on Rails</li>
-                <li>React</li>
                 <li>Ruby (Gem Development)</li>
                 <li>RSpec</li>
+                <li>React</li>
                 <li>React Native</li>
                 <li>SCSS</li>
                 <li>PostgreSQL</li>
