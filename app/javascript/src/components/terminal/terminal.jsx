@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
 import TerminalHeader from "./terminal_header";
@@ -9,11 +9,15 @@ import {
   commandHelpText,
   linkableCommands,
 } from "../../../utils/command_text_helper";
+import { getCookie } from "../../../utils/cookie_helper";
+import useMobileDetector from "../../hooks/use_mobile_detector";
 
 // TODO: allow all commands with results to be passed in as props. Change from imports
 function Terminal() {
   const [sizeStatus, setSizeStatus] = useState("regular");
   const [commandHistory, setCommandHistory] = useState([]);
+  const { isMobile } = useMobileDetector();
+
   // valid commands structure { inputString: "", results: [{ string: "", resultOnClick: () => {} }], text: "" }
   const validCommands = [
     "ls",
@@ -28,6 +32,17 @@ function Terminal() {
     "resume",
     "tech-stack",
   ];
+
+  function warnUserOfMobile() {
+    const mobileConfirm = getCookie("mobileConfirm") === "true";
+
+    if (!mobileConfirm) {
+      alert(
+        "Note: This terminal is not optimized for mobile. It will function as expected but the best experience is had on a desktop browser."
+      );
+      document.cookie = "mobileConfirm=true; SameSite=None; Secure";
+    }
+  }
 
   function handleSizeChange(e, status) {
     e.preventDefault();
@@ -282,13 +297,18 @@ function Terminal() {
     }
   }
 
+  useEffect(() => {
+    if (isMobile) {
+      warnUserOfMobile();
+    }
+  }, [isMobile]);
+
   return (
     <div id="component-terminal" className={`${sizeStatus}`}>
       <TerminalHeader
         sizeStatus={sizeStatus}
         onSizeChangeClick={handleSizeChange}
       />
-
       <TerminalBody
         commandHistory={commandHistory}
         onCommandSubmit={handleCommandSubmit}
