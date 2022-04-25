@@ -10,14 +10,12 @@ import {
   linkableCommands,
 } from "../../../utils/command_text_helper";
 import { getCookie } from "../../../utils/cookie_helper";
-
 import useMobileDetector from "../../hooks/use_mobile_detector";
 
 // TODO: allow all commands with results to be passed in as props. Change from imports
 function Terminal() {
   const [sizeStatus, setSizeStatus] = useState("regular");
   const [commandHistory, setCommandHistory] = useState([]);
-
   const { isMobile } = useMobileDetector();
 
   // valid commands structure { inputString: "", results: [{ string: "", resultOnClick: () => {} }], text: "" }

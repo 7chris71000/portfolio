@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 function useMobileDetector() {
   const [isMobile, setIsMobile] = useState(false);
