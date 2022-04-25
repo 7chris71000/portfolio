@@ -7,7 +7,7 @@ import TerminalHelperText from "./terminal_helper_text";
 
 // command history is an array of objects: { inputString: "ls", results: [{string: 'about', resultOnClick: func}] }
 
-function TerminalBody({ commandHistory, onCommandSubmit }) {
+function TerminalBody({ commandHistory, onCommandSubmit, validCommandsList }) {
   const [inputString, setInputString] = useState("help");
   const [currentCommandIndex, setCurrentCommandIndex] = useState(0);
   const [terminalFocused, setTerminalFocused] = useState(true);
@@ -28,7 +28,8 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
     setTerminalFocused(false);
   }
 
-  function handleKeypress({ key, keyCode }) {
+  function handleKeypress(e) {
+    const { key, keyCode } = e;
     // This is listening for the arrow keys values
     // TODO: change position of cursor with < and >
 
@@ -53,6 +54,13 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
         setInputString("");
         setCurrentCommandIndex(commandHistory.length);
       }
+    } else if (keyCode === 9 || key === "Tab") {
+      // tab
+      validCommandsList.forEach((command) => {
+        if (command.startsWith(inputString)) {
+          setInputString(command);
+        }
+      });
     } else {
       if (inHistory) {
         setCurrentCommandIndex(commandHistory.length);
@@ -154,3 +162,9 @@ function TerminalBody({ commandHistory, onCommandSubmit }) {
 }
 
 export default TerminalBody;
+
+TerminalBody.propTypes = {
+  commandHistory: PropTypes.array.isRequired,
+  onCommandSubmit: PropTypes.func.isRequired,
+  validCommandsList: PropTypes.array.isRequired,
+};
