@@ -312,6 +312,7 @@ function Terminal() {
       <TerminalBody
         commandHistory={commandHistory}
         onCommandSubmit={handleCommandSubmit}
+        validCommandsList={validCommands}
       />
     </div>
   );
