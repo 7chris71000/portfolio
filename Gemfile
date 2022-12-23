@@ -62,5 +62,6 @@ gem 'net-pop', require: false
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+gem 'rufo'
 
 #ruby-gemset=portfolio
