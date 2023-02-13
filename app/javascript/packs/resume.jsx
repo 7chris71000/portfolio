@@ -11,9 +11,28 @@ function Resume() {
       <div className="resume-download-container">
         <a
           className="btn btn-primary"
+          href="documents/Christopher_Francis_Cover_Letter.pdf"
+        >
+          Download Cover Letter
+        </a>
+      </div>
+      <div className="resume-container">
+        <Document
+          file="documents/Christopher_Francis_Cover_Letter.pdf"
+          onLoadError={(error) => {
+            console.log(error.message);
+          }}
+        >
+          <Page pageNumber={1} width={width < 900 ? width : 900} />
+        </Document>
+      </div>
+
+      <div className="resume-download-container">
+        <a
+          className="btn btn-primary"
           href="documents/Christopher_Francis_Resume.pdf"
         >
-          Download
+          Download Resume
         </a>
       </div>
       <div className="resume-container">
