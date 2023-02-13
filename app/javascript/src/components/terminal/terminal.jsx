@@ -122,8 +122,12 @@ function Terminal() {
           {
             string: "Contact",
             resultOnClick: () => {
-              // TODO: scroll to contact form on click
-              window.scrollTo(0, 0);
+              window
+                .open(
+                  "https://www.linkedin.com/in/christopher-francis-40227b127/",
+                  "_blank"
+                )
+                .focus();
             },
           },
         ];
@@ -255,10 +259,13 @@ function Terminal() {
                 <li>RSpec</li>
                 <li>React</li>
                 <li>React Native</li>
+                <li>Express.js</li>
                 <li>SCSS</li>
                 <li>PostgreSQL</li>
                 <li>Python (Windows Services)</li>
+                <li>Cadence (Flow Blockchain Smart Contracts)</li>
                 <li>Heroku</li>
+                <li>CircleCI</li>
                 <li>Git</li>
               </ul>
             </p>
@@ -273,6 +280,7 @@ function Terminal() {
               Personal Projects
               <ul>
                 <li>Python (Raspberry Pi Robotics)</li>
+                <li>Fly.io</li>
               </ul>
             </p>
           </div>

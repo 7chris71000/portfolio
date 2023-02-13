@@ -1,6 +1,10 @@
 {
   "name": "portfolio",
   "private": true,
+  "scripts": {
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build"
+  },
   "dependencies": {
     "@babel/preset-react": "^7.16.7",
     "@fortawesome/fontawesome-free": "^6.0.0",
