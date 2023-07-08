@@ -1,10 +1,25 @@
 #component-resume {
-  margin-top: 100px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
 
-  .resume-download-container,
-  .resume-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  .document-container {
+    max-width: 900px;
+    margin: 0 auto;
+
+    .resume-download-container,
+    .resume-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .download-button {
+        padding: 10px;
+        height: fit-content;
+        width: fit-content;
+      }
+    }
   }
 }
